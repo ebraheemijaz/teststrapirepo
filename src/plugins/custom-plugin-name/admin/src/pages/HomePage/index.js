@@ -8,7 +8,7 @@ import AddModal from '../../components/AddModal';
 import Table from '../../components/Table';
 import SendModal from '../../components/SendModal';
 
-const API_URL = "http://demo5648508.mockable.io/candidates"
+const API_URL = "https://demo5648508.mockable.io/candidates"
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState('')
