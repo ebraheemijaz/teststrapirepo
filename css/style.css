@@ -114,9 +114,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary);
+    /* background: var(--primary); */
     border-radius: 50%;
-    transform: rotate(-14deg);
+    /* transform: rotate(-14deg); */
 }
 
 .service-item .service-icon i {
