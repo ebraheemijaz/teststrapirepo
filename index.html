@@ -130,10 +130,16 @@
                 <div class="col-lg-7">
                     <div class="mb-4">
                         <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">About Us</h5>
-                        <h1 class="display-4">Best Medical Care For Yourself and Your Family</h1>
+                        <h1 class="display-4">Best Medical Billing Company For You</h1>
                     </div>
-                    <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
-                    <div class="row g-3 pt-3">
+                    <p>
+                        Solvercm is among the top medical billing companies in Colorado that enable access to CPB-certified staff, 
+                        including R&D resources and platform-independent professionals, to handle the revenue cycle for practices. 
+                        We have enriched our knowledge in medical billing and practice management services, audit review, and healthcare 
+                        management consultancy that let us provide quality first services to medical billing providers. Our medical billing and
+                         coding experts handle the complete medical billing cycle for multiple specialties to increase their collections and reduce
+                          denial and administrative costs.</p>
+                    <!-- <div class="row g-3 pt-3">
                         <div class="col-sm-3 col-6">
                             <div class="bg-light text-center rounded-circle py-4">
                                 <i class="fa fa-3x fa-user-md text-primary mb-3"></i>
@@ -158,7 +164,7 @@
                                 <h6 class="mb-0">Free<small class="d-block text-primary">Ambulance</small></h6>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -270,22 +276,39 @@
                         <h1 class="mb-4">Book An Appointment</h1>
                         <form onsubmit="handleSubmit()">
                             <div class="row g-3">
-                                <!-- <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Choose Department</option>
-                                        <option value="1">Department 1</option>
-                                        <option value="2">Department 2</option>
-                                        <option value="3">Department 3</option>
+                                <div class="col-12 col-sm-6">
+                                    <select id="provider" class="form-select bg-light border-0" style="height: 55px;">
+                                        <option selected value="0">Choose Provider</option>
+                                        <option value="Solo Practice">Solo Practice</option>
+                                        <option alue="Private Practice">Private Practice</option>
+                                        <option value="Group Practices">Group Practices</option>
+                                        <option value="Health Maintenance Organization(HMOs)">Health Maintenance Organization(HMOs)</option>
+                                        <option value="Hospital">Hospital</option>
+                                        <option value="Intermediate Care Facility">Intermediate Care Facility</option>
+                                        <option value=" Accountable care organization"> Accountable care organization</option>
+                                        <option value="Nursing Practice">Nursing Practice</option>
+                                        <option value="Ambulatory Surgical Center">Ambulatory Surgical Center</option>
+                                        <option value="Home Health Agency">Home Health Agency</option>
+                                        <option value="Hospice Care">Hospice Care</option>
+                                        <option value="Diagnostic &amp; Imaging Center">Diagnostic &amp; Imaging Center</option>
+                                        <option value="Assisted Living Facility">Assisted Living Facility</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Select Doctor</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
+                                    <select id="allservices" class="form-select bg-light border-0" style="height: 55px;">
+                                        <option selected value="0">Choose Service</option>
+                                        <option value="Medical Billing Services">Medical Billing Services</option>
+                                        <option value="Medical Coding Services">Medical Coding Services</option>
+                                        <option value="Medical Credentialing Services">Medical Credentialing Services</option>
+                                        <option value="Providers Quality Payment Program">Providers Quality Payment Program</option>
+                                        <option value="Patient Billing Services">Patient Billing Services</option>
+                                        <option value="Front Office Management">Front Office Management</option>
+                                        <option value="Out of Network Billing Services">Out of Network Billing Services</option>
+                                        <option value="Psychiatry Medical Billing Services">Psychiatry Medical Billing Services</option>
+                                        <option value="other">Other</option>
                                     </select>
-                                </div> -->
+                                </div>
                                 <div class="col-12 col-sm-6">
                                     <input id="name" type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
                                 </div>
@@ -725,12 +748,15 @@
             const email=document.getElementById("email").value.replaceAll("'","").replaceAll('"','');
             const phone=document.getElementById("phone").value.replaceAll("'","").replaceAll('"','');
             const message=document.getElementById("message").value.replaceAll("'","").replaceAll('"','');
+            const provider=document.getElementById("provider").value;
+            const allservices=document.getElementById("allservices").value;
+
             let headersList = {
                 "Accept": "*/*",
                 "Content-Type": "application/x-www-form-urlencoded"
             }
 
-            let bodyContent = `payload={"text":"Name: ${name.replace()}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}"}`;
+            let bodyContent = `payload={"text":"Name: ${name.replace()}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\nProvider: ${provider}\nService: ${allservices}"}`;
 
             let response = await fetch("https://hooks.slack.com/services/"+id, { 
                 method: "POST",
@@ -744,6 +770,8 @@
             document.getElementById("email").value = ''
             document.getElementById("phone").value = ''
             document.getElementById("message").value = ''
+            document.getElementById("provider").value='0'
+            document.getElementById("allservices").value='0'
         }
     </script>
 </body>
